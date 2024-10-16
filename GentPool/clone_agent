@@ -1,5 +1,5 @@
 #!/bin/bash
-abc
+
 # Get the base agent name from the first argument
 base_agent="$1"
 
