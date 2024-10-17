@@ -35,3 +35,4 @@ class PDFReaderTool(BaseTool):
 
         except Exception as e:
             return f"An error occurred while reading the PDF: {str(e)}"
+
