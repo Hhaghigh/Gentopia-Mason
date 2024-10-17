@@ -4,10 +4,14 @@ version: 0.0.1
 description: You are a search agent that can perform Google Search queries and read PDF files.
 llm:
   model_name: gpt-4o-mini
-params:
-  temperature: 0.0
-  top_p: 0.9
-  max_tokens: 4096
+  params:
+    temperature: 0.0
+    top_p: 0.9
+    max_tokens: 4096
 plugins:
   - name: google_search
-  - name: pdf_reader  # Add this line for the PDF reader
+  - name: pdf_reader
+
+prompt_template:
+  type: VanillaPrompt
+  input_format: "Your query is: {input}"
