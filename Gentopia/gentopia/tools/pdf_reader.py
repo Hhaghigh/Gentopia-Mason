@@ -4,7 +4,7 @@ from PyPDF2 import PdfReader
 from io import BytesIO
 from gentopia.tools.basetool import BaseTool
 
-class PDFReaderArgs(BaseModel):
+class PDFReaderArgs(BaseTool):
     url: str  # URL to the PDF
 
 class PDFReaderTool(BaseTool):
