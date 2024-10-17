@@ -1,3 +1,4 @@
+from pydantic import BaseModel
 import requests
 from PyPDF2 import PdfReader
 from io import BytesIO
