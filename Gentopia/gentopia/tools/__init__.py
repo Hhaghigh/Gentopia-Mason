@@ -13,7 +13,7 @@ from .gradio import *
 from .code_interpreter import PythonCodeInterpreter
 from .file_operation import WriteFile, ReadFile
 from .duckduckgo import DuckDuckGo
-
+from .pdf_reader import PDFReaderTool  # Import the PDF reader tool
 
 def load_tools(name: str) -> BaseTool:
     name2tool = {
@@ -38,12 +38,14 @@ def load_tools(name: str) -> BaseTool:
         "duckduckgo": DuckDuckGo,
         "search_author_by_name": SearchAuthorByName,
         "search_author_by_interests": SearchAuthorByInterests,
-        "author_uid2paper": AuthorUID2Paper,
+        "search_author_uid2paper": SearchAuthorUID2Paper,
         "search_paper": SearchPaper,
         "search_single_paper": SearchSinglePaper,
         "search_related_paper": SearchRelatedPaper,
         "search_cite_paper": SearchCitePaper,
+        "pdf_reader": PDFReaderTool,  # <-- Add the PDF reader tool here
     }
+
     if name not in name2tool:
         raise NotImplementedError
-    return name2tool[name]
+    return name2tool[name]()
