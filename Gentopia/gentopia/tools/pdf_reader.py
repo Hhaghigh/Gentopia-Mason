@@ -4,7 +4,8 @@ from PyPDF2 import PdfReader
 from io import BytesIO
 from gentopia.tools.basetool import BaseTool
 
-class PDFReaderArgs(BaseTool):
+# Define the schema for the tool's arguments
+class PDFReaderArgs(BaseModel):
     url: str  # URL to the PDF
 
 class PDFReaderTool(BaseTool):
@@ -12,7 +13,7 @@ class PDFReaderTool(BaseTool):
 
     name = "pdf_reader"
     description = "Reads a PDF from a given URL and returns its content."
-    args_schema = Type[BaseModel] = PDFReaderArgs
+    args_schema: Type[BaseModel] = PDFReaderArgs
 
     def _run(self, url: str) -> str:
         """Reads the PDF from the URL and extracts the text."""
