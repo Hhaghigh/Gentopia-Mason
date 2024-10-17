@@ -20,23 +20,30 @@ class SearchAuthorByName(BaseTool):
     author: str = ""
     results: List = []
 
-    def _run(self, author: AnyStr, top_k: int = 5) -> str:
-        if author != self.author:
-            self.results = scholarly.search_author(author)
+    import time  # Import the time module
+
+def _run(self, author: AnyStr, top_k: int = 5) -> str:
+    if author != self.author:
+        self.results = scholarly.search_author(author)
         self.author = author
-        assert self.results is not None
-        ans = []
-        for it in islice(self.results, top_k):
-            ans.append(str({
-                'name': it["name"],
-                'uid': it["scholar_id"],
-                'affiliation': it["affiliation"],
-                'interests': it['interests'],
-                'citation': it['citedby'],
-                }))
-        if not ans:
-            return "no further information available"
-        return '\n\n'.join(ans)
+    assert self.results is not None
+    ans = []
+    
+    # Loop through the search results and add a delay between each
+    for it in islice(self.results, top_k):
+        ans.append(str({
+            'name': it["name"],
+            'uid': it["scholar_id"],
+            'affiliation': it["affiliation"],
+            'interests': it["interests"],
+            'citation': it["citedby"],
+        }))
+        
+        time.sleep(1)  # Add a 1-second delay between processing each result
+    
+    if not ans:
+        return "no further information available"
+    return '\n\n'.join(ans)
 
     async def _arun(self, *args: Any, **kwargs: Any) -> Any:
         raise NotImplementedError
