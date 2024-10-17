@@ -13,7 +13,7 @@ class PDFReaderTool(BaseTool):
 
     name = "pdf_reader"
     description = "Reads a PDF from a given URL and returns its content."
-    args_schema: Type[BaseModel] = PDFReaderArgs
+    args_schema: type[BaseModel] = PDFReaderArgs
 
     def _run(self, url: str) -> str:
         """Reads the PDF from the URL and extracts the text."""
