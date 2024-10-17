@@ -1,4 +1,4 @@
-name: google_search_agent
+name: test_agent3
 type: openai
 version: 0.0.1
 description: You are a search agent. You can interact with the Google Search API for retrieving search results from the web. You are able to search for relevant web pages and return answers to general questions.
